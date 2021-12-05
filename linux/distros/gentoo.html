@@ -8,15 +8,14 @@
 </head>
 <body>
 
-<div id="Compile Kernel"><h1 id="Compile Kernel" class="header"><a href="#Compile Kernel">Compile Kernel</a></h1></div>
-<div id="Compile Kernel-How to compile a kernel in gentoo?"><h2 id="How to compile a kernel in gentoo?" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?">How to compile a kernel in gentoo?</a></h2></div>
+<div id="How to compile a kernel in gentoo?"><h1 id="How to compile a kernel in gentoo?" class="header"><a href="#How to compile a kernel in gentoo?">How to compile a kernel in gentoo?</a></h1></div>
 
-<div id="Compile Kernel-How to compile a kernel in gentoo?-To get the latest kernel run"><h3 id="To get the latest kernel run" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?-To get the latest kernel run">To get the latest kernel run</a></h3></div>
+<div id="How to compile a kernel in gentoo?-To get the latest kernel run"><h3 id="To get the latest kernel run" class="header"><a href="#How to compile a kernel in gentoo?-To get the latest kernel run">To get the latest kernel run</a></h3></div>
 <p>
 	<code>emerge -uDNq --with-bdeps=y sys-kernel/gentoo-sources</code>
 </p>
 
-<div id="Compile Kernel-How to compile a kernel in gentoo?-Change kernel symlink"><h3 id="Change kernel symlink" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?-Change kernel symlink">Change kernel symlink</a></h3></div>
+<div id="How to compile a kernel in gentoo?-Change kernel symlink"><h3 id="Change kernel symlink" class="header"><a href="#How to compile a kernel in gentoo?-Change kernel symlink">Change kernel symlink</a></h3></div>
 <ul>
 <li>
 By default kernel is symlinked to <code>/usr/src/linux</code>
@@ -55,7 +54,7 @@ If you can't remember the numbers run <code>eselect kernel list</code> again to 
 </ul>
 </ul>
 
-<div id="Compile Kernel-How to compile a kernel in gentoo?-Few things before compiling our kernel"><h3 id="Few things before compiling our kernel" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?-Few things before compiling our kernel">Few things before compiling our kernel</a></h3></div>
+<div id="How to compile a kernel in gentoo?-Few things before compiling our kernel"><h3 id="Few things before compiling our kernel" class="header"><a href="#How to compile a kernel in gentoo?-Few things before compiling our kernel">Few things before compiling our kernel</a></h3></div>
 <ul>
 <li>
 Let's first cd into the kernel source directory by <code>cd /usr/src/linux</code>
@@ -78,10 +77,10 @@ This where I store my old kernel configs you're location may be different.
 </ul>
 </ul>
 
-<div id="Compile Kernel-How to compile a kernel in gentoo?-Let's compile our kernel"><h3 id="Let's compile our kernel" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?-Let's compile our kernel">Let's compile our kernel</a></h3></div>
+<div id="How to compile a kernel in gentoo?-Let's compile our kernel"><h3 id="Let's compile our kernel" class="header"><a href="#How to compile a kernel in gentoo?-Let's compile our kernel">Let's compile our kernel</a></h3></div>
 <ul>
 <li>
-I have a <em><span id="Compile Kernel-How to compile a kernel in gentoo?-Let's compile our kernel-12 thread"></span><strong id="12 thread">12 thread</strong></em> cpu so I'm using <em><span id="Compile Kernel-How to compile a kernel in gentoo?-Let's compile our kernel-13"></span><strong id="13">13</strong></em> (<em>no. of threads + 1</em>). Use accordingly.
+I have a <em><span id="How to compile a kernel in gentoo?-Let's compile our kernel-12 thread"></span><strong id="12 thread">12 thread</strong></em> cpu so I'm using <em><span id="How to compile a kernel in gentoo?-Let's compile our kernel-13"></span><strong id="13">13</strong></em> (<em>no. of threads + 1</em>). Use accordingly.
 
 <li>
 Run <code>make -j13 menuconfig</code> to open up the ncurese config menu of kernel.
@@ -129,7 +128,7 @@ I'm using <em>lz4</em> because it is faster the other compression algorithms.
 </ul>
 </ul>
 
-<div id="Compile Kernel-How to compile a kernel in gentoo?-Now let's prepare our bootloader"><h3 id="Now let's prepare our bootloader" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?-Now let's prepare our bootloader">Now let's prepare our bootloader</a></h3></div>
+<div id="How to compile a kernel in gentoo?-Now let's prepare our bootloader"><h3 id="Now let's prepare our bootloader" class="header"><a href="#How to compile a kernel in gentoo?-Now let's prepare our bootloader">Now let's prepare our bootloader</a></h3></div>
 <ul>
 <li>
 I use grub.
@@ -142,7 +141,7 @@ So to update grub to use the newly compiled kernel run.
 
 </ul>
 
-<div id="Compile Kernel-How to compile a kernel in gentoo?-Time has come"><h3 id="Time has come" class="header"><a href="#Compile Kernel-How to compile a kernel in gentoo?-Time has come">Time has come</a></h3></div>
+<div id="How to compile a kernel in gentoo?-Time has come"><h3 id="Time has come" class="header"><a href="#How to compile a kernel in gentoo?-Time has come">Time has come</a></h3></div>
 <ul>
 <li>
 If everything went well do a reboot.
