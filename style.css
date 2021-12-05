@@ -180,7 +180,7 @@ code {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  padding: 100px 3px;
+  padding: 16px 16px;
   display: inline-block;
   color: #747474;
   border: 1px solid #101010;
