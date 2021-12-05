@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../style.css">
+<title>gentoo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Compile Kernel"><h3 id="Compile Kernel" class="header"><a href="#Compile Kernel">Compile Kernel</a></h3></div>
+<div id="How to compile a kernel in gentoo?"><h2 id="How to compile a kernel in gentoo?" class="header"><a href="#How to compile a kernel in gentoo?">How to compile a kernel in gentoo?</a></h2></div>
+
+<div id="To get the latest kernel run"><h1 id="To get the latest kernel run" class="header"><a href="#To get the latest kernel run">To get the latest kernel run</a></h1></div>
+<p>
+	<code>emerge -uDNq --with-bdeps=y sys-kernel/gentoo-sources</code>
+</p>
+
+<div id="Change kernel symlink"><h1 id="Change kernel symlink" class="header"><a href="#Change kernel symlink">Change kernel symlink</a></h1></div>
+<ul>
+<li>
+By default kernel is symlinked to <code>/usr/src/linux</code>
+
+<li>
+To see all the kernels that are currenty installed in the system run
+
+<ul>
+<li>
+<code>eselect kernel list</code>
+
+<ul>
+<li>
+It will list all the kernels installed.
+
+<li>
+Currently selected kernel will be appeneded with a *
+
+</ul>
+<li>
+To change the kernel symlink use
+
+<ul>
+<li>
+<code>eselect kernel set number</code>
+
+<ul>
+<li>
+After set give the number that you want to use.
+
+<li>
+If you can't remember the numbers run <code>eselect kernel list</code> again to get the numbers.
+
+</ul>
+</ul>
+</ul>
+</ul>
+
+<div id="Few things before compiling our kernel"><h1 id="Few things before compiling our kernel" class="header"><a href="#Few things before compiling our kernel">Few things before compiling our kernel</a></h1></div>
+<ul>
+<li>
+Let's first cd into the kernel source directory by <code>cd /usr/src/linux</code>
+
+<li>
+Run <code>make mrproper</code> to clean up the last compiled stuff.
+
+<li>
+If you already have an old config copy it to the <em>/usr/src/linux</em>
+
+<ul>
+<li>
+<code>cp /home/s2b/.config/kernel/*.config .config</code>
+
+<ul>
+<li>
+This where I store my old kernel configs you're location may be different.
+
+</ul>
+</ul>
+</ul>
+
+<div id="Let's compile our kernel"><h1 id="Let's compile our kernel" class="header"><a href="#Let's compile our kernel">Let's compile our kernel</a></h1></div>
+<ul>
+<li>
+I have a <em><span id="Let's compile our kernel-12 thread"></span><strong id="12 thread">12 thread</strong></em> cpu so I'm using <em><span id="Let's compile our kernel-13"></span><strong id="13">13</strong></em> (<em>no. of threads + 1</em>). Use accordingly.
+
+<li>
+Run <code>make -j13 menuconfig</code> to open up the ncurese config menu of kernel.
+
+<ul>
+<li>
+Chosse options only you need.
+
+</ul>
+<li>
+Run <code>make -j13 modules_prepare</code> to preaper all the modules.
+
+<li>
+Run <code>make -j13 &amp;&amp; make -j13 modules_install &amp;&amp; make -j13 install</code>
+
+<ul>
+<li>
+<code>make -j13</code> to compile the kernel.
+
+<li>
+<code>make -j13 modules_install</code> to install all the modules.
+
+<li>
+<code>make -j13 install</code> to install everything.
+
+</ul>
+<li>
+Now let's create our initramfs. I'm going to use genkernel to do it.
+
+<li>
+<code>genkernel --install --kernel-config=/usr/src/linux/.config --compress-initramfs-type=lz4 --microcode-initramfs initramfs</code>
+
+<ul>
+<li>
+Here <code>--compress-initramfs-type=lz4</code> is not needed if you're going to use the deault compression.
+
+<li>
+I'm using <em>lz4</em> because it is faster the other compression algorithms.
+
+<ul>
+<li>
+<em>lz4</em> size is going to be larger in general.
+
+</ul>
+</ul>
+</ul>
+
+<div id="Now let's prepare our bootloader"><h1 id="Now let's prepare our bootloader" class="header"><a href="#Now let's prepare our bootloader">Now let's prepare our bootloader</a></h1></div>
+<ul>
+<li>
+I use grub.
+
+<li>
+So to update grub to use the newly compiled kernel run.
+
+<li>
+<code>grub-mkconfig -o /boot/grub/grub.cfg</code>
+
+</ul>
+
+<div id="Time has come"><h1 id="Time has come" class="header"><a href="#Time has come">Time has come</a></h1></div>
+<ul>
+<li>
+If everything went well do a reboot.
+
+<li>
+If everything works fine after the boot.
+
+<li>
+Run <code>cp .config /home/s2b/.config/kernel/$(uname -r).config</code>
+
+<ul>
+<li>
+To copy the currently compiled config and save it.
+
+</ul>
+</ul>
+
+</body>
+</html>
