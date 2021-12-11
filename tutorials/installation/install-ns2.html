@@ -15,15 +15,51 @@
 <li>
 <a href="install-ns2.html#Install">#Install</a>
 
+<ul>
+<li>
+<a href="install-ns2.html#Debian/Ubuntu">#Debian/Ubuntu</a>
+
+<li>
+<a href="install-ns2.html#Compile yourself(couldn't get it to work)">#Compile yourself(couldn't get it to work)</a>
+
+<li>
+<a href="install-ns2.html#I'm not using debian/debian based distro">#I'm not using debian/debian based distro</a>
+
+<li>
+<a href="install-ns2.html#I use windows/macos">#I use windows/macos</a>
+
+</ul>
 <li>
 <a href="install-ns2.html#Reference">#Reference</a>
 
 </ul>
 
 <div id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install"><h3 id="Install" class="header"><a href="#How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install">Install</a></h3></div>
+
+<div id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Debian/Ubuntu"><h4 id="Debian/Ubuntu" class="header"><a href="#How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Debian/Ubuntu">Debian/Ubuntu</a></h4></div>
 <ul>
 <li>
-<a href="https://sourceforge.net/projects/nsnam/postdownload">Download ns2 latest version</a>
+Run <code>sudo apt install tcl nam ns2</code>
+
+<li>
+Thats it.
+
+</ul>
+
+<div id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)"><h4 id="Compile yourself(couldn't get it to work)" class="header"><a href="#How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)">Compile yourself(couldn't get it to work)</a></h4></div>
+<ul>
+<li>
+<span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)-Dosen't work with gcc version greater than 4.8.0"></span><strong id="Dosen't work with gcc version greater than 4.8.0">Dosen't work with gcc version greater than 4.8.0</strong>
+
+<li>
+<span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)-Download"></span><strong id="Download">Download</strong>
+
+<ul>
+<li>
+<a href="https://github.com/SymphonySimper/ns-allinone-2.35">Fork of ns2 with added patch(recommended)</a>
+
+<li>
+<a href="https://sourceforge.net/projects/nsnam/postdownload">ns2 latest version(source forge)</a>
 
 <ul>
 <li>
@@ -32,6 +68,7 @@ It will download the latest version of ns2 available which is <em>2.35</em>
 <li>
 The download file zip will be named as <em>ns-allione-2.35.tar.gz</em>
 
+</ul>
 </ul>
 <li>
 Extract the downloaded file
@@ -64,10 +101,42 @@ Then run <code>./install</code> to install ns2
 This may take some time depeding upon your hardware as the program
 				  needs to be compiled.
 
+<li>
+If everything goes well then that's it
+
 </ul>
+<li>
+Now follow the steps in the output and add <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)-PATH"></span><strong id="PATH">PATH</strong> and <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)-LD_LIBRARY_PATH"></span><strong id="LD_LIBRARY_PATH">LD_LIBRARY_PATH</strong>
+			   to your <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)-.profile"></span><strong id=".profile">.profile</strong> file or to your shell <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-Compile yourself(couldn't get it to work)-rc"></span><strong id="rc">rc</strong> file.
+
+<ul>
+<li>
+Then source the file by running <code>source .profile</code> or <code>source .rc</code>
+				  respectively.
+
+<li>
+Once that is done run <code>ns</code> to check wether the environment variables
+				  are set properly.
+
+</ul>
+<li>
+Now to validate your build (i.e) to check wether ns2 is properly
+			   installed run <code>./validate</code>
+
 </ol>
 </ul>
 </ul>
+
+<div id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I'm not using debian/debian based distro"><h4 id="I'm not using debian/debian based distro" class="header"><a href="#How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I'm not using debian/debian based distro">I'm not using debian/debian based distro</a></h4></div>
+<p>
+	You my friend is out of luck. If you are able to find <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I'm not using debian/debian based distro-gcc version 4.8.0"></span><strong id="gcc version 4.8.0">gcc version 4.8.0</strong> and <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I'm not using debian/debian based distro-lower"></span><strong id="lower">lower</strong>
+try compiling it might work if not. Run a <span id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I'm not using debian/debian based distro-kvm/vm"></span><strong id="kvm/vm">kvm/vm</strong> with a debian/debian based distro.
+</p>
+
+<div id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I use windows/macos"><h4 id="I use windows/macos" class="header"><a href="#How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Install-I use windows/macos">I use windows/macos</a></h4></div>
+<p>
+	WHY?
+</p>
 
 <div id="How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Reference"><h3 id="Reference" class="header"><a href="#How to install Network Simulator 2(ns2) in unix based os?-Table of contents-Reference">Reference</a></h3></div>
 <ul>
