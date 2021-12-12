@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../style.css">
+<title>admin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Table of contents"><h2 id="Table of contents" class="header"><a href="#Table of contents">Table of contents</a></h2></div>
+<ul>
+<li>
+<a href="admin.html#Manage user groups">#Manage user groups</a>
+
+<ul>
+<li>
+<a href="admin.html#List groups">#List groups</a>
+
+<li>
+<a href="admin.html#Create/delete group">#Create/delete group</a>
+
+<li>
+<a href="admin.html#Add a user to a group/groups">#Add a user to a group/groups</a>
+
+<li>
+<a href="admin.html#Remove a user from a group">#Remove a user from a group</a>
+
+</ul>
+</ul>
+
+<div id="Table of contents-Manage user groups"><h3 id="Manage user groups" class="header"><a href="#Table of contents-Manage user groups">Manage user groups</a></h3></div>
+
+<div id="Table of contents-Manage user groups-List groups"><h4 id="List groups" class="header"><a href="#Table of contents-Manage user groups-List groups">List groups</a></h4></div>
+<ul>
+<li>
+To list current user's groups run <code>groups</code>
+
+<li>
+To list other user's groups run <code>groups [username]</code>
+
+<li>
+To list all the groups in a system run <code>less /etc/group</code>
+
+</ul>
+
+<p>
+<span id="Table of contents-Manage user groups-List groups-Below sections requires root permission"></span><strong id="Below sections requires root permission">Below sections requires root permission</strong>
+</p>
+
+<div id="Table of contents-Manage user groups-Create/delete group"><h4 id="Create/delete group" class="header"><a href="#Table of contents-Manage user groups-Create/delete group">Create/delete group</a></h4></div>
+<ul>
+<li>
+<span id="Table of contents-Manage user groups-Create/delete group-Can create/delete only one group at a time"></span><strong id="Can create/delete only one group at a time">Can create/delete only one group at a time</strong>
+
+<li>
+To create a group run <code>groupadd [group name]</code>
+
+<li>
+To delete a group run <code>groupdel [group name]</code>
+
+</ul>
+
+<div id="Table of contents-Manage user groups-Add a user to a group/groups"><h4 id="Add a user to a group/groups" class="header"><a href="#Table of contents-Manage user groups-Add a user to a group/groups">Add a user to a group/groups</a></h4></div>
+<p>
+	 To add a user to a group run <code>usermod -aG [groups] [username]</code>
+</p>
+<ul>
+<li>
+If there are multiple groups that a user has to added
+		  seperate groups with a comma(,).
+
+<li>
+But there can only be one username.
+
+</ul>
+
+<div id="Table of contents-Manage user groups-Remove a user from a group"><h4 id="Remove a user from a group" class="header"><a href="#Table of contents-Manage user groups-Remove a user from a group">Remove a user from a group</a></h4></div>
+<ul>
+<li>
+<span id="Table of contents-Manage user groups-Remove a user from a group-Can remove only one user from one group at a time"></span><strong id="Can remove only one user from one group at a time">Can remove only one user from one group at a time</strong>
+	To remove a user from a group run `gpasswd --delete [username] [group name]
+
+</ul>
+
+</body>
+</html>
