@@ -8,10 +8,31 @@
 </head>
 <body>
 
-<div id="Table of contents"><h2 id="Table of contents" class="header"><a href="#Table of contents">Table of contents</a></h2></div>
+<div id="Install mysql in gentoo"><h1 id="Install mysql in gentoo" class="header"><a href="#Install mysql in gentoo">Install mysql in gentoo</a></h1></div>
+
+<div id="Install mysql in gentoo-Table of contents"><h2 id="Table of contents" class="header"><a href="#Install mysql in gentoo-Table of contents">Table of contents</a></h2></div>
+<ul>
+<li>
+<a href="mysql.html#How to install mysql">#How to install mysql</a>
+
+<li>
+<a href="mysql.html#How to run">#How to run</a>
+
+<li>
+Errors
+
+<ul>
+<li>
+<a href="mysql.html#Error 2002">#Error 2002</a>
+
+</ul>
+<li>
+<a href="mysql.html#Reference">#Reference</a>
+
+</ul>
 
 
-<div id="Table of contents-How to install mysql"><h3 id="How to install mysql" class="header"><a href="#Table of contents-How to install mysql">How to install mysql</a></h3></div>
+<div id="Install mysql in gentoo-Table of contents-How to install mysql"><h3 id="How to install mysql" class="header"><a href="#Install mysql in gentoo-Table of contents-How to install mysql">How to install mysql</a></h3></div>
 <ul>
 <li>
 Run <code>emerge --config dev-db/mysql</code>
@@ -26,10 +47,92 @@ Run <code>emerge acct-user/mysql acct-group/mysql</code>
 
 </ul>
 
-<div id="Table of contents-Error 2002"><h3 id="Error 2002" class="header"><a href="#Table of contents-Error 2002">Error 2002</a></h3></div>
+<div id="Install mysql in gentoo-Table of contents-How to run"><h3 id="How to run" class="header"><a href="#Install mysql in gentoo-Table of contents-How to run">How to run</a></h3></div>
 <ul>
 <li>
-ERROR <img src="../../../../../mywiki/{ ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld" />}
+First make sure mysql server is running <code>rc-service mysql status</code>
+	  the output should say <code>* status: started</code>
+
+<ul>
+<li>
+If not start the service by running <code>rc-service mysql start</code>
+
+<li>
+If you don't want to do this everytime you can make mysql start
+		  at the boot by running <code>rc-update add mysql default</code>
+
+<ul>
+<li>
+This will start mysql at boot.
+
+</ul>
+</ul>
+<li>
+Run <code>mysql --user=username --password=password</code>
+
+<ul>
+<li>
+eg: <code>mysql --user=root --password=root</code>
+
+<li>
+In <code>--user=root</code> <em>root</em> is the username and in
+		  <code>--password=root</code> <em>root</em> is the password for the user <em>root</em>.
+
+<li>
+Username and password would be assignend by you when installing
+		  mysql with <em>--config</em> option as mentioned in <a href="mysql.html#How to install mysql">#How to install mysql</a>
+
+</ul>
+</ul>
+
+<div id="Install mysql in gentoo-Table of contents-Error 2002"><h3 id="Error 2002" class="header"><a href="#Install mysql in gentoo-Table of contents-Error 2002">Error 2002</a></h3></div>
+<p>
+	Error looks like this
+</p>
+<pre>
+	ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+</pre>
+<ul>
+<li>
+To resolve this error do the following
+
+<ol>
+<li>
+<code>touch /var/run/mysqld/mysqld.sock</code>
+
+<li>
+<code>touch /var/run/mysqld/mysqld.pid</code>
+
+<li>
+<code>chown -R mysql:mysql /var/run/mysqld/mysqld.sock</code>
+
+<li>
+<code>chown -R mysql:mysql /var/run/mysqld/mysqld.pid</code>
+
+<li>
+<code>chmod -R 644 /var/run/mysqld/mysqld.sock</code>
+
+</ol>
+<li>
+Once done start the service
+
+<ul>
+<li>
+Run <code>rc-service mysql start</code>
+
+</ul>
+<li>
+If everything goes well this error should be no more.
+
+</ul>
+
+<div id="Install mysql in gentoo-Table of contents-Reference"><h3 id="Reference" class="header"><a href="#Install mysql in gentoo-Table of contents-Reference">Reference</a></h3></div>
+<ul>
+<li>
+<a href="https://wiki.gentoo.org/wiki/MySQL">https://wiki.gentoo.org/wiki/MySQL</a>
+
+<li>
+<a href="https://stackoverflow.com/questions/54614259/docker-mysql-cant-connect-to-local-mysql-server-through-socket">https://stackoverflow.com/questions/54614259/docker-mysql-cant-connect-to-local-mysql-server-through-socket</a>
 
 </ul>
 
