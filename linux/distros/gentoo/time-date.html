@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../../style.css">
+<title>time-date</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Table of contents"><h2 id="Table of contents" class="header"><a href="#Table of contents">Table of contents</a></h2></div>
+<ul>
+<li>
+<a href="time-date.html#Wrong time in websites">#Wrong time in websites</a>
+
+</ul>
+
+<div id="Table of contents-Wrong time in websites"><h3 id="Wrong time in websites" class="header"><a href="#Table of contents-Wrong time in websites">Wrong time in websites</a></h3></div>
+<p>
+	To fix this
+</p>
+<ul>
+<li>
+Edit <em>/etc/conf.d/hwclock</em>
+
+<ul>
+<li>
+set <code>clock="local"</code> and
+			  run <code>rc-service hwclock restart</code>
+
+<li>
+now to set the time run <code>hwclock --hctosys</code>
+
+</ul>
+<li>
+Once this is done your time issue should be fixed
+
+<li>
+But <em>date</em> command will not display the local time, to do
+		  so run <code>date -u</code> everytime you run the date command.
+
+</ul>
+
+</body>
+</html>
