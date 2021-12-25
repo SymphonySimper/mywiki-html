@@ -22,17 +22,36 @@
 <ul>
 <li>
 Run the following
-<pre>
-			echo "UTC" &gt; /etc/timezone
-			emerge --config sys-libs/timezone-data
-			# Now to set the correct time run the following
-			# Here I'm going set time to 6:53(12h format)/ 18:53(24h format)
-			# You should use 24h time format to set the time
-			hwclock --set --date 18:53
-			hwclock --hctosys
-			rc-service hwclock restart
-</pre>
 
+<ul>
+<li>
+You need root permissions to change time
+
+<li>
+<code>echo "UTC" &gt; /etc/timezone</code>
+
+<li>
+<code>root # emerge --config sys-libs/timezone-data</code>
+
+<li>
+Now to set the correct time run the following
+
+<li>
+Here I'm going set time to 6:53(12h format)/ 18:53(24h format)
+
+<li>
+You should use 24h time format to set the time
+
+<li>
+<code>hwclock --set --date 18:53</code>
+
+<li>
+<code>hwclock --hctosys</code>
+
+<li>
+<code>rc-service hwclock restart</code>
+
+</ul>
 <li>
 Now you should be good to go
 
