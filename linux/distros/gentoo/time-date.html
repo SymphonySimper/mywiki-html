@@ -11,35 +11,46 @@
 <div id="Table of contents"><h2 id="Table of contents" class="header"><a href="#Table of contents">Table of contents</a></h2></div>
 <ul>
 <li>
-<a href="time-date.html#Wrong time in websites">#Wrong time in websites</a>
+<a href="time-date.html#How to set time">#How to set time</a>
 
 </ul>
 
-<div id="Table of contents-Wrong time in websites"><h3 id="Wrong time in websites" class="header"><a href="#Table of contents-Wrong time in websites">Wrong time in websites</a></h3></div>
+<div id="Table of contents-How to set time"><h3 id="How to set time" class="header"><a href="#Table of contents-How to set time">How to set time</a></h3></div>
 <p>
-	To fix this
+	To set time(atleas the way I like to do)
 </p>
 <ul>
 <li>
-Edit <em>/etc/conf.d/hwclock</em>
+Run the following
+<pre>
+			echo "UTC" &gt; /etc/timezone
+			emerge --config sys-libs/timezone-data
+			# Now to set the correct time run the following
+			# Here I'm going set time to 6:53(12h format)/ 18:53(24h format)
+			# You should use 24h time format to set the time
+			hwclock --set --date 18:53
+			hwclock --hctosys
+			rc-service hwclock restart
+</pre>
+
+<li>
+Now you should be good to go
 
 <ul>
 <li>
-set <code>clock="local"</code> and
-			  run <code>rc-service hwclock restart</code>
-
-<li>
-now to set the time run <code>hwclock --hctosys</code>
+Here <code>date</code> and <code>date -u</code> will produce the expected result
 
 </ul>
-<li>
-Once this is done your time issue should be fixed
-
-<li>
-But <em>date</em> command will not display the local time, to do
-		  so run <code>date -u</code> everytime you run the date command.
-
 </ul>
+
+<div id="Table of contents-How to set time-Why this method?"><h4 id="Why this method?" class="header"><a href="#Table of contents-How to set time-Why this method?">Why this method?</a></h4></div>
+<p>
+	I found this by accident while I was playing with <em>EndeavourOS</em> in the live environment.
+As I had issues with time where I would have to settle with either wrong time in webistes(uses utc) or
+my cron wouldn't work. So it was frustrating experience to say the least. I tried a lot of things but
+nothing would fix this and finally when I was playing with <em>EndeavourOS</em>, it had proper time and I wanted
+to know how they did and thats how I ended up with this solution.
+</p>
 
 </body>
 </html>
