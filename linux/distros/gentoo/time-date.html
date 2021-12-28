@@ -13,12 +13,12 @@
 <li>
 <a href="time-date.html#How to set time">#How to set time</a>
 
+<li>
+<a href="time-date.html#How to set time manually">#How to set time manually</a>
+
 </ul>
 
 <div id="Table of contents-How to set time"><h3 id="How to set time" class="header"><a href="#Table of contents-How to set time">How to set time</a></h3></div>
-<p>
-	To set time(atleas the way I like to do)
-</p>
 <ul>
 <li>
 Run the following
@@ -28,48 +28,51 @@ Run the following
 You need root permissions to change time
 
 <li>
-<code>echo "UTC" &gt; /etc/timezone</code>
+<code>echo "Asia/Kolkata" &gt; /etc/timezone</code>
 
+<ul>
 <li>
-<code>root # emerge --config sys-libs/timezone-data</code>
+To see all the timezones run <code>ls /usr/share/zoneinfo</code>
 
+</ul>
 <li>
-Now to set the correct time run the following
-
-<li>
-Here I'm going set time to 6:53(12h format)/ 18:53(24h format)
-
-<li>
-You should use 24h time format to set the time
-
-<li>
-<code>hwclock --set --date 18:53</code>
-
-<li>
-<code>hwclock --hctosys</code>
-
-<li>
-<code>rc-service hwclock restart</code>
+<code>emerge --config sys-libs/timezone-data</code>
 
 </ul>
 <li>
 Now you should be good to go
 
+</ul>
+
+<div id="Table of contents-How to set time manually"><h3 id="How to set time manually" class="header"><a href="#Table of contents-How to set time manually">How to set time manually</a></h3></div>
 <ul>
 <li>
-Here <code>date</code> and <code>date -u</code> will produce the expected result
+Here I'm going set time to 6:53(12h format)/ 18:53(24h format)
+
+<ul>
+<li>
+You should use 24h time format to set the time and also you should
+			  pass the offset here as I'm in India it is +05:30
+
+<li>
+<code>hwclock --set --date 18:53:00+05:30 --local</code>
+
+<ul>
+<li>
+To set for <em>utc</em> use <em>--utc</em> instead of <em>--local</em>
+
+<li>
+Here <em>18:53:00:+05:30</em> is <em>hours(24h format):minutes:seconds:+offset</em>
 
 </ul>
-</ul>
+<li>
+<code>hwclock --hctosys</code>
 
-<div id="Table of contents-How to set time-Why this method?"><h4 id="Why this method?" class="header"><a href="#Table of contents-How to set time-Why this method?">Why this method?</a></h4></div>
-<p>
-	I found this by accident while I was playing with <em>EndeavourOS</em> in the live environment.
-As I had issues with time where I would have to settle with either wrong time in webistes(uses utc) or
-my cron wouldn't work. So it was frustrating experience to say the least. I tried a lot of things but
-nothing would fix this and finally when I was playing with <em>EndeavourOS</em>, it had proper time and I wanted
-to know how they did and thats how I ended up with this solution.
-</p>
+</ul>
+<li>
+Now you should be good to go
+
+</ul>
 
 </body>
 </html>
