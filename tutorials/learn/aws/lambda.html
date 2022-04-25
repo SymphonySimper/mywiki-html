@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="../../../style.css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.xml">
+<title>lambda</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="How to run AWS Lambda functions locally"><h1 id="How to run AWS Lambda functions locally" class="header"><a href="#How to run AWS Lambda functions locally">How to run AWS Lambda functions locally</a></h1></div>
+
+<div id="How to run AWS Lambda functions locally-Table Of Contents"><h2 id="Table Of Contents" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents">Table Of Contents</a></h2></div>
+<p>
+	<a href="lambda.html#Dependencies">#Dependencies</a>
+	<a href="lambda.html#Configuring AWS CLI (Optional)">#Configuring AWS CLI (Optional)</a>
+	<a href="lambda.html#Create a lambda function with SAM CLI">#Create a lambda function with SAM CLI</a>
+	<a href="lambda.html#Run lamda function locally">#Run lamda function locally</a>
+</p>
+
+<div id="How to run AWS Lambda functions locally-Table Of Contents-Dependencies"><h3 id="Dependencies" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents-Dependencies">Dependencies</a></h3></div>
+<p>
+	Install the following
+</p>
+<ul>
+<li>
+<img src="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" alt="AWS CLI" />
+
+<li>
+<img src="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html" alt="SAM CLI" />
+
+<li>
+<img src="https://docs.docker.com/get-docker/" alt="Docker" />
+
+<li>
+<img src="https://pypi.org/project/boto3/" alt="boto3(AWS SDK for python)(Optional)" />
+
+<ul>
+<li>
+To install <code>boto3</code> just run <code>pip install boto3</code>
+
+</ul>
+</ul>
+<div id="How to run AWS Lambda functions locally-Table Of Contents-Configuring AWS CLI (Optional)"><h3 id="Configuring AWS CLI (Optional)" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents-Configuring AWS CLI (Optional)">Configuring AWS CLI (Optional)</a></h3></div>
+<ul>
+<li>
+You can skip this step if you don't want to deploy the lamda function in aws.
+
+<li>
+Run <code>aws configure</code> to configure AWS CLI
+
+<ul>
+<li>
+You'll need your <em>Acess Key ID</em>, <em>Secret Access Key</em>.
+
+<li>
+Next you'll need to enter your region name (ex: for <em>N. Virginia</em> it is <em>us-east-1</em>)
+
+<ul>
+<li>
+You can find the region name in your <em>AWS Console</em>
+
+</ul>
+<li>
+Next for the output format you have 5 options
+
+<ul>
+<li>
+The are <em>json</em>, <em>yaml</em>, <em>yaml-stream</em>, <em>text</em>, <em>table</em>.
+
+<li>
+<img src="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output-format.html" alt="Read More" />
+
+</ul>
+</ul>
+</ul>
+<div id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI"><h3 id="Create a lambda function with SAM CLI" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI">Create a lambda function with SAM CLI</a></h3></div>
+<p>
+	Now let's create a lambda function using <code>sam</code>. To create a lamda function using <code>sam</code>
+run <code>sam init</code>
+</p>
+
+<ol>
+<li>
+<em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
+<pre>
+		You can preselect a particular runtime or package type when using the `sam init` experience.
+		Call `sam init --help` to learn more.
+	
+		Which template source would you like to use?
+			1 - AWS Quick Start Templates
+			2 - Custom Template Location
+		Choice:
+</pre>
+
+</ol>
+	
+<p>
+		If you have custom template then choose option <em>2</em>. But in our case we don't have
+	one. So we will choose option <em>1</em>.
+</p>
+	
+<ol>
+<li>
+<em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
+<pre>
+		Choose an AWS Quick Start application template
+			1 - Hello World Example
+			2 - Multi-step workflow
+			3 - Serverless API
+			4 - Scheduled task
+			5 - Standalone function
+			6 - Data processing
+			7 - Infrastructure event management
+			8 - Machine Learning
+		Template:
+</pre>
+		We will choose <em>1</em>, which is an Hello World Example.
+
+</ol>
+	
+<ol>
+<li>
+<em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
+<pre>
+		Use the most popular runtime and package type? (Python and zip) [y/N]:
+</pre>
+		For this choose <em>y</em>.
+
+</ol>
+	
+<ol>
+<li>
+<em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
+<pre>
+		Project name [sam-app]: 
+</pre>
+		You can enter give whatever name that you like.
+
+</ol>
+	
+<ol>
+<li>
+<em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
+		If everything goes well, you'll have the following output.
+<pre>
+		Cloning from https://github.com/aws/aws-sam-cli-app-templates (process may take a moment)
+		
+		    -----------------------
+		    Generating application:
+		    -----------------------
+		    Name: HelloWorld
+		    Runtime: python3.9
+		    Architectures: x86_64
+		    Dependency Manager: pip
+		    Application Template: hello-world
+		    Output Directory: .
+		    
+		    Next steps can be found in the README file at ./HelloWorld/README.md
+		        
+		
+		    Commands you can use next
+		    =========================
+		    [*] Create pipeline: cd HelloWorld &amp;&amp; sam pipeline init --bootstrap
+		    [*] Test Function in the Cloud: sam sync --stack-name {stack-name} --watch
+</pre>
+
+</ol>
+<div id="How to run AWS Lambda functions locally-Table Of Contents-Run lamda function locally"><h3 id="Run lamda function locally" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents-Run lamda function locally">Run lamda function locally</a></h3></div>
+<p>
+	Now to run the lambda function
+</p>
+<ol>
+<li>
+You have to build the funtcion first
+
+<ul>
+<li>
+To build run <code>sam build</code> inside your project directory.
+
+<li>
+You have <em>build</em> the project <em>everytime</em> you make a change.
+
+</ul>
+<li>
+To run the function locally
+
+<ul>
+<li>
+Run <code>sam local invoke</code>
+
+</ul>
+</ol>
+
+</body>
+</html>
