@@ -17,6 +17,7 @@
 	<a href="lambda.html#Configuring AWS CLI (Optional)">#Configuring AWS CLI (Optional)</a>
 	<a href="lambda.html#Create a lambda function with SAM CLI">#Create a lambda function with SAM CLI</a>
 	<a href="lambda.html#Run lamda function locally">#Run lamda function locally</a>
+	<a href="lambda.html#Run locally with events">#Run locally with events</a>
 </p>
 
 <div id="How to run AWS Lambda functions locally-Table Of Contents-Dependencies"><h3 id="Dependencies" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents-Dependencies">Dependencies</a></h3></div>
@@ -87,21 +88,15 @@ run <code>sam init</code>
 <pre>
 		You can preselect a particular runtime or package type when using the `sam init` experience.
 		Call `sam init --help` to learn more.
-	
+
 		Which template source would you like to use?
 			1 - AWS Quick Start Templates
 			2 - Custom Template Location
 		Choice:
 </pre>
-
-</ol>
-	
-<p>
 		If you have custom template then choose option <em>2</em>. But in our case we don't have
 	one. So we will choose option <em>1</em>.
-</p>
-	
-<ol>
+
 <li>
 <em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
 <pre>
@@ -118,9 +113,6 @@ run <code>sam init</code>
 </pre>
 		We will choose <em>1</em>, which is an Hello World Example.
 
-</ol>
-	
-<ol>
 <li>
 <em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
 <pre>
@@ -128,25 +120,19 @@ run <code>sam init</code>
 </pre>
 		For this choose <em>y</em>.
 
-</ol>
-	
-<ol>
 <li>
 <em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
 <pre>
-		Project name [sam-app]: 
+		Project name [sam-app]:
 </pre>
 		You can enter give whatever name that you like.
 
-</ol>
-	
-<ol>
 <li>
 <em><span id="How to run AWS Lambda functions locally-Table Of Contents-Create a lambda function with SAM CLI-Output"></span><strong id="Output">Output</strong></em>
 		If everything goes well, you'll have the following output.
 <pre>
 		Cloning from https://github.com/aws/aws-sam-cli-app-templates (process may take a moment)
-		
+
 		    -----------------------
 		    Generating application:
 		    -----------------------
@@ -156,10 +142,10 @@ run <code>sam init</code>
 		    Dependency Manager: pip
 		    Application Template: hello-world
 		    Output Directory: .
-		    
+
 		    Next steps can be found in the README file at ./HelloWorld/README.md
-		        
-		
+
+
 		    Commands you can use next
 		    =========================
 		    [*] Create pipeline: cd HelloWorld &amp;&amp; sam pipeline init --bootstrap
@@ -192,6 +178,24 @@ Run <code>sam local invoke</code>
 
 </ul>
 </ol>
+<div id="How to run AWS Lambda functions locally-Table Of Contents-Run locally with events"><h3 id="Run locally with events" class="header"><a href="#How to run AWS Lambda functions locally-Table Of Contents-Run locally with events">Run locally with events</a></h3></div>
+<ul>
+<li>
+To run locally with events, you have to create a <em>json</em> file.
+
+<li>
+Then run <code>sam local invoke -e events.json</code>
+
+<ul>
+<li>
+Here <em>events.json</em> is the file with the <em>json</em> object.
+
+</ul>
+<li>
+If you have more than one function then you have to mention the function's 
+	name. Ex <code>sam local invoke HelloWorldFunction -e events.json</code>.
+
+</ul>
 
 </body>
 </html>
